@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  libft-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: libftTester
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: sudo apt-get install -y make gcc valgrind
+
+      - name: Run tests
+        run: TERM=xterm make
+        
+      - name: Clean
+        run: make ffclean
