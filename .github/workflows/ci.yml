@@ -24,6 +24,3 @@ jobs:
 
       - name: Run tests
         run: TERM=xterm make
-        
-      - name: Clean
-        run: make ffclean
